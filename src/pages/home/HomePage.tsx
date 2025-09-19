@@ -3,7 +3,7 @@ import styles from "./page.module.scss";
 import {Container} from '@/shared/ui'
 import {Header, Advantages} from './blocks'
 
-export default function Home() {
+export function HomePage() {
 
     return (
         <>

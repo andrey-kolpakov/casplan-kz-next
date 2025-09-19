@@ -7,7 +7,7 @@ import {Popup} from '@/shared/ui'
 import {OrgSchema} from '@/shared/lib/seo'
 import {getDeviceType} from '@/shared/lib/getDeviceType'
 
-import "./globals.scss";
+import "./styles/globals.scss";
 
 const roboto = Roboto({
     weight: ["100", "300", "400", "500", "700", "900"],
