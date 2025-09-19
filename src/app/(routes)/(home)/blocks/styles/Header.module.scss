@@ -1,0 +1,129 @@
+@use '@/shared/styles' as *;
+
+/* Корневой контейнер шапки */
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  /* 38px 78px → rem */
+  padding: 2.375rem 4.875rem;
+
+  gap: 1.25rem; /* 20px */
+  align-self: stretch;
+
+  border-radius: 1.25rem; /* 20px */
+  background: radial-gradient(40.89% 38.6% at 50% 61.4%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.34) 100%);
+  box-shadow: 0 0.25rem 1.1875rem 0 rgba(0, 0, 0, 0.05); /* 4px 19px */
+
+  /* Высота секции */
+  height: 60vh;
+  min-height: 37.5rem; /* 600px */
+
+  /* чтобы текст не залезал под правую картинку */
+  padding-right: 28rem; /* подгон под ширину headerImg на десктопе */
+
+  @include breakpoint($mobile-bp) {
+    min-height: unset;
+    padding: 1.5625rem; /* 25px */
+    padding-right: 1.5625rem;
+  }
+}
+
+/* Внутренняя колонка */
+.headerInner {
+  display: flex;
+  flex-direction: column;
+  gap: 3.125rem; /* 50px */
+  width: min(60%, 48rem);
+
+  @include breakpoint($mobile-bp) {
+    width: 100% !important;
+    gap: 1.25rem; /* 20px */
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Список буллетов */
+.headerUl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+  gap: 0.625rem; /* 10px */
+
+  @include breakpoint($mobile-bp) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Элемент списка */
+.headerLi {
+  list-style: none;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem; /* 10px */
+}
+
+/* Иконка-точка */
+.imgPoint {
+  background: url('/images/header/li.svg') no-repeat;
+  background-size: contain;
+  min-width: 1.375rem;  /* 22px */
+  min-height: 1.375rem; /* 22px */
+  position: relative;
+  top: 0.1875rem; /* 3px */
+}
+
+/* Кнопки */
+.buttonList {
+  display: flex;
+  gap: 1.25rem; /* 20px */
+}
+
+/* Иллюстрация справа */
+.headerImg {
+  position: absolute;
+  top: 0;
+  right: -13.125rem; /* -210px — слегка уезжает за край */
+  height: 50rem;     /* 800px */
+  width: 62.5rem;    /* 1000px */
+
+  background-image: url('/images/header/laptop.webp');
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  content: '';
+
+  @include breakpoint($mobile-bp) {
+    right: 0;
+    height: 25rem;  /* 400px */
+    width: 100%;
+    background-position: right top;
+    opacity: 0.18; /* чтобы не спорило с текстом на мобилке */
+  }
+}
+
+/* Контейнер секции на странице (если используешь) */
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5.9375rem; /* 95px */
+
+  @media (max-width: 37.5rem) { /* 600px */
+    gap: 3.125rem; /* 50px */
+  }
+}

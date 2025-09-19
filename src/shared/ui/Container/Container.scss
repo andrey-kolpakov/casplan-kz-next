@@ -1,0 +1,87 @@
+@use '../../styles' as *;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  padding: 1rem 0;
+
+  //&:first-child{
+  //  background-color: red;
+  //}
+
+  @include breakpoint($mobile-bp){
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    //overflow: hidden;
+  }
+
+  &--pd{
+    padding: 5rem 0rem;
+
+    @include breakpoint($mobile-bp){
+      padding: 1rem;
+    }
+  }
+
+  &--mb-false{
+    margin-bottom: 0;
+  }
+
+  &--pd-false{
+    padding: 0;
+  }
+}
+
+.container-outer {
+  background-position: center center;
+  background-size: cover;
+  margin: 4rem 0;
+  box-sizing: border-box;
+
+  @include breakpoint($mobile-bp){
+    margin: 2rem 0;
+  }
+
+  @include breakpoint($mobile-bp){
+    width: 100%;
+  }
+
+  &--full-screen {
+    min-height: 100vh;
+  }
+
+  &--centered-vertical {
+    display: flex;
+    align-items: center;
+  }
+
+  &--centered-horizontal {
+    display: flex;
+    justify-content: center;
+  }
+
+  &--stretch-content{
+    .container{
+      width: 100%;
+    }
+  }
+
+  &--pd{
+    padding: 2rem 0rem;
+
+
+  }
+
+  &--margin-top-0{
+    margin-top: 0;
+  }
+
+  &.no-pd-mobile{
+    @include breakpoint($mobile-bp){
+      //padding: 0 !important;
+      margin-top: 0;
+    }
+  }
+}
