@@ -4,6 +4,9 @@ import {Roboto} from "next/font/google";
 import {Providers} from './providers/Providers'
 import {Popup} from '@/shared/ui'
 
+import {OrgSchema} from '@/shared/lib/seo'
+import {getDeviceType} from '@/shared/lib/getDeviceType'
+
 import "./globals.scss";
 
 const roboto = Roboto({
@@ -21,15 +24,20 @@ export const metadata: Metadata = {
     description: "Платформа нового поколения, обеспечивающая комплексную цифровую трансформацию организаций со сложными системами управления",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
                                        children,
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const deviceType = await getDeviceType();
+
     return (
         <html lang="ru">
+
+        <OrgSchema/>
+
         <body className={roboto.variable}>
-        <Providers>
+        <Providers deviceType={deviceType}>
             <Popup/>
 
             {children}

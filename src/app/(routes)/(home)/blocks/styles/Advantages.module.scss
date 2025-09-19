@@ -1,0 +1,132 @@
+@use '@/shared/styles' as *;
+
+/* Корневой блок */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* 20px */
+  padding: 2rem 0;
+}
+
+.title {
+  font-size: 1.75rem; /* ~28px */
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Основная сетка: левые карточки — центр — правый столбец */
+.container {
+  display: grid;
+  grid-template-rows: 1fr 1.2fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 48rem) { /* 768px */
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Левая колонка: карточки преимуществ */
+.regular {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.regularItem {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem; /* 20px */
+  padding: 1.5rem 1.25rem; /* 24px 20px */
+  background-color: #fff;
+  isolation: isolate;
+}
+
+.regularItem h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.regularItem p {
+  margin: 0;
+  opacity: 0.92;
+  line-height: 1.45;
+}
+
+/* Декоративные иконки на фоне */
+.bgIcon {
+  position: absolute;
+  font-size: 8rem;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: -1;
+}
+.left {
+  left: -1.5rem;
+  bottom: -1rem;
+  transform: rotate(25deg);
+}
+.right {
+  right: -1.25rem;
+  bottom: -0.75rem;
+  transform: rotate(-15deg);
+}
+
+/* Центральный блок */
+.main {
+  display: grid;
+  grid-template-columns: 0.6fr 0.4fr;
+
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px 25px;
+  overflow: visible;
+  position: relative;
+}
+
+@media (max-width: 48rem) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Список буллетов */
+.headerUl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+  gap: 0.625rem; /* 10px */
+
+  @include breakpoint($mobile-bp) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Элемент списка */
+.headerLi {
+  list-style: none;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem; /* 10px */
+}
+
+/* Иконка-точка */
+.imgPoint {
+  background: url('/images/header/li.svg') no-repeat;
+  background-size: contain;
+  min-width: 1.375rem;  /* 22px */
+  min-height: 1.375rem; /* 22px */
+  position: relative;
+  top: 0.1875rem; /* 3px */
+}
+
+.image{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

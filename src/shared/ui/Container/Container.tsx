@@ -1,14 +1,13 @@
 import React, { forwardRef } from 'react';
 import clsx from 'clsx';
-
-import './Container.scss';
+import styles from './Container.module.scss';
 
 import type { StaticImageData } from 'next/image';
 
 interface Props {
     className?: string;
     classNameOuter?: string;
-    children?: React.ReactNode; // Добавляем тип для children
+    children?: React.ReactNode;
     imageURL?: StaticImageData | string;
     fullScreen?: boolean;
     centeredVertical?: boolean;
@@ -21,46 +20,75 @@ interface Props {
 }
 
 // Обычный контейнер
-export const Container: React.FC<Props> = ({ className, children, pd, pdfalse, mbnone }) => {
-    return <div className={clsx(className, 'container', {
-        'container--pd': pd,
-        'container--pd-false': pdfalse,
-        'container--mb-false': mbnone
-    })}>{children}</div>;
+export const Container: React.FC<Props> = ({
+                                               className,
+                                               children,
+                                               pd,
+                                               pdfalse,
+                                               mbnone,
+                                           }) => {
+    return (
+        <div
+            className={clsx(
+                styles.container,
+                className,
+                {
+                    [styles.containerPd]: pd,
+                    [styles.containerPdFalse]: pdfalse,
+                    [styles.containerMbFalse]: mbnone,
+                }
+            )}
+        >
+            {children}
+        </div>
+    );
 };
 
 // Контейнер с поддержкой background и ref
 export const ContainerBackground = forwardRef<HTMLDivElement, Props>(
-    ({ className, classNameOuter, children, imageURL, fullScreen, centeredVertical, centeredHorizontal, stretchContent, pd, mtnone}, ref) => {
-        // console.log(imageURL)
+    (
+        {
+            className,
+            classNameOuter,
+            children,
+            imageURL,
+            fullScreen,
+            centeredVertical,
+            centeredHorizontal,
+            stretchContent,
+            pd,
+            mtnone,
+        },
+        ref
+    ) => {
+        const bg = imageURL
+            ? typeof imageURL === 'string'
+                ? imageURL
+                : imageURL.src || ''
+            : '';
 
         return (
             <div
-                // Передаём ref здесь
-                className={clsx('container-outer', classNameOuter, {
-                    'container-outer--full-screen': fullScreen,
-                    'container-outer--centered-vertical': centeredVertical,
-                    'container-outer--centered-horizontal': centeredHorizontal,
-                    'container-outer--stretch-content': stretchContent,
-                    'container-outer--pd': pd,
-                    'container-outer--margin-top-0': mtnone
-                })}
-                style={
-                    imageURL
-                        ? {
-                            backgroundImage: `url(${
-                                typeof imageURL === 'string'
-                                    ? imageURL
-                                    : imageURL?.src || ''
-                            })`,
-                        }
-                        : undefined
-                }
+                className={clsx(
+                    styles.containerOuter,
+                    classNameOuter,
+                    {
+                        [styles.containerOuterFullScreen]: fullScreen,
+                        [styles.containerOuterCenteredVertical]: centeredVertical,
+                        [styles.containerOuterCenteredHorizontal]: centeredHorizontal,
+                        [styles.containerOuterStretchContent]: stretchContent,
+                        [styles.containerOuterPd]: pd,
+                        [styles.containerOuterMarginTop0]: mtnone,
+                    }
+                )}
+                style={bg ? { backgroundImage: `url(${bg})` } : undefined}
             >
-                <div className={clsx(className, 'container')} ref={ref}>{children}</div>
+                <div className={clsx(styles.container, className)} ref={ref}>
+                    {children}
+                </div>
             </div>
         );
     }
 );
 
-ContainerBackground.displayName = 'ContainerBackground'; // Указываем имя компонента для отладки
+ContainerBackground.displayName = 'ContainerBackground';

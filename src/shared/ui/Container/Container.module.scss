@@ -1,0 +1,57 @@
+@use '../../styles' as *;
+
+/* Внутренний контейнер */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  padding: 1rem 0;
+
+  @include breakpoint($mobile-bp){
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+}
+
+/* Модификаторы container */
+.containerPd {
+  padding: 5rem 0;
+
+  @include breakpoint($mobile-bp){
+    padding: 1rem;
+  }
+}
+.containerMbFalse { margin-bottom: 0; }
+.containerPdFalse { padding: 0; }
+
+/* Внешний контейнер с фоном */
+.containerOuter {
+  background-position: center center;
+  background-size: cover;
+  margin: 4rem 0;
+  box-sizing: border-box;
+
+  @include breakpoint($mobile-bp){
+    margin: 2rem 0;
+  }
+
+  @include breakpoint($mobile-bp){
+    width: 100%;
+  }
+}
+
+/* Модификаторы containerOuter */
+.containerOuterFullScreen { min-height: 100vh; }
+.containerOuterCenteredVertical { display: flex; align-items: center; }
+.containerOuterCenteredHorizontal { display: flex; justify-content: center; }
+.containerOuterStretchContent .container { width: 100%; }
+.containerOuterPd { padding: 2rem 0; }
+.containerOuterMarginTop0 { margin-top: 0; }
+
+/* Если нужна версия без паддингов на мобилках — опционально */
+.noPdMobile {
+  @include breakpoint($mobile-bp){
+    margin-top: 0;
+  }
+}
