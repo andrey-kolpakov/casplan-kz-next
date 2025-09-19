@@ -1,0 +1,24 @@
+.container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.item{
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px;
+  color: rgb(10, 29, 16);
+  transform: scale(1);
+  border-radius: 20px;
+  padding: 30px 20pt;
+  transition: 0.3s ease-in-out;
+}
+
+.icon{
+  width: 2rem;
+  height: 2rem;
+}
+
+.cta{
+
+}

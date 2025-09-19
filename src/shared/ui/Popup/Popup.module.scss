@@ -1,6 +1,6 @@
 @use '../../styles' as *;
 
-.popup-container {
+.popupContainer {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -17,66 +17,48 @@
   transition: all 0.3s ease-in-out;
 }
 
-.popup-container--active {
+.popupActive {
   opacity: 1;
   pointer-events: all;
 }
 
-.popup-container__backdrop {
+.popupBackdrop {
   position: absolute;
   opacity: 1;
   background-color: rgba($color: black, $alpha: .8);
   width: 100%;
   height: 100%;
-
   backdrop-filter: blur(.3rem);
-  // z-index: 3;
 
   @include breakpoint($mobile-bp){
     opacity: 1;
-
     background: rgba($color: #000000, $alpha: .7);
     backdrop-filter: blur(.5rem);
   }
 }
 
-.popup-preview-container {
+.popupPreviewContainer {
   width: 100%;
   height: auto;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   cursor: pointer;
 }
 
-.current-popup {
+.currentPopup {
   z-index: 3;
-
   width: auto;
   height: auto;
-
-  /* width: 60%; */
-
   max-width: 1130px;
   max-height: 80%;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   overflow: hidden;
 
   @include breakpoint($mobile-bp){
-    // overflow: hidden;
     overflow: visible;
     max-width: 95%;
-  }
-
-  img{
-    //object-fit: cover;
-    //width: 100%;
-    //height: 100%;
   }
 }

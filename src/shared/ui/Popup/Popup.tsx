@@ -1,22 +1,29 @@
-'use client'
+'use client';
 
-import {usePopupStore} from '@/shared/lib/popupStore'
-import './Popup.scss'
+import { usePopupStore } from '@/shared/lib/popupStore';
+import clsx from 'clsx';
+import styles from './Popup.module.scss';
 
-function Popup() {
-    const {currentPopup, closePopup} = usePopupStore()
+export function Popup() {
+    const { currentPopup, closePopup } = usePopupStore();
 
     const handleBackdropClick = () => {
-        if (!currentPopup) return
-        closePopup()
-    }
+        if (!currentPopup) return;
+        closePopup();
+    };
 
     return (
-        <div className={`popup-container ${currentPopup ? 'popup-container--active' : ''}`}>
-            <div className="current-popup">{currentPopup?.content}</div>
-            <div className="popup-container__backdrop" onClick={handleBackdropClick}></div>
+        <div
+            className={clsx(
+                styles.popupContainer,
+                { [styles.popupActive]: currentPopup }
+            )}
+        >
+            <div className={styles.currentPopup}>{currentPopup?.content}</div>
+            <div
+                className={styles.popupBackdrop}
+                onClick={handleBackdropClick}
+            />
         </div>
-    )
+    );
 }
-
-export {Popup}
